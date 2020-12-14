@@ -2,7 +2,10 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-from odoo import models,fields
+#Lorena
+
+from odoo import fields
+from odoo import models
 class Proveedor(models.Model):
     _name = 'flyshoesreserva.proveedor'
     
@@ -12,8 +15,12 @@ class Proveedor(models.Model):
                              )]
     empresa = fields.Char(required=True)
     email = fields.Char(required=True)
+    mombre = fields.Char(required=True)
     telefono = fields.Char(required=True)
     descripcion = fields.Char()
     
+    #Relacion de proveedor->usuario(Administrador)
     administrador = fields.Many2one ('res.users', string="Administrador", required=True)
-    producto = fields.One2many ('flyshoesreserva.producto', 'proveedor', string="Producto", required=True)
+    
+    #Relacion de proveedor-> producto
+    producto = fields.One2many ('flyshoesreserva.producto', 'proveedor', string="Productos", required=True)
